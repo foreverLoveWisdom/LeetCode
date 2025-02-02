@@ -1,10 +1,10 @@
 class Solution {
   public int[] maximumBobPoints(int numArrows, int[] aliceArrows) {
-    final int allMask = (1 << 12) - 1;
+    final int kFullMask = (1 << 12) - 1;
     int maxPoint = 0;
     int maxMask = 0;
 
-    for (int mask = 0; mask < allMask; ++mask) {
+    for (int mask = 0; mask < kFullMask; ++mask) {
       Pair<Boolean, Integer> pair = getShotableAndPoint(mask, numArrows, aliceArrows);
       final boolean shotable = pair.getKey();
       final int point = pair.getValue();

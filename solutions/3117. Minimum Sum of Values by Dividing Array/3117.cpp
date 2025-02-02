@@ -3,13 +3,13 @@ class Solution {
   int minimumValueSum(vector<int>& nums, vector<int>& andValues) {
     vector<vector<unordered_map<int, int>>> mem(
         nums.size(), vector<unordered_map<int, int>>(andValues.size()));
-    const int ans = minimumValueSum(nums, andValues, 0, 0, kAllMask, mem);
+    const int ans = minimumValueSum(nums, andValues, 0, 0, kFullMask, mem);
     return ans == kInf ? -1 : ans;
   }
 
  private:
   static constexpr int kInf = 1'000'000'000;
-  static constexpr int kAllMask = (1 << 17) - 1;
+  static constexpr int kFullMask = (1 << 17) - 1;
 
   // Returns the minimum value sum of nums[i..n) and andValues[j..m), where
   // `mask` is the running value of the current subarray.
@@ -31,7 +31,7 @@ class Solution {
       return mem[i][j][mask] =
                  min(minimumValueSum(nums, andValues, i + 1, j, mask, mem),
                      nums[i] + minimumValueSum(nums, andValues, i + 1, j + 1,
-                                               kAllMask, mem));
+                                               kFullMask, mem));
     // Keep going.
     return mem[i][j][mask] =
                minimumValueSum(nums, andValues, i + 1, j, mask, mem);

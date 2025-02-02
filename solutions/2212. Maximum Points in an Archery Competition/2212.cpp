@@ -1,11 +1,11 @@
 class Solution {
  public:
   vector<int> maximumBobPoints(int numArrows, vector<int>& aliceArrows) {
-    constexpr int allMask = (1 << 12) - 1;
+    constexpr int kFullMask = (1 << 12) - 1;
     int maxPoint = 0;
     int maxMask = 0;
 
-    for (int mask = 0; mask < allMask; ++mask) {
+    for (int mask = 0; mask < kFullMask; ++mask) {
       const auto& [shotable, point] =
           getShotableAndPoint(mask, numArrows, aliceArrows);
       if (shotable && point > maxPoint) {

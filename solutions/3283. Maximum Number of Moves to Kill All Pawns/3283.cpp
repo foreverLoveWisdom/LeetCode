@@ -16,7 +16,7 @@ class Solution {
     for (int sourceIndex = 0; sourceIndex < n + 1; ++sourceIndex)
       bfs(positions, sourceIndex, hashedPositionToIndex, dist);
 
-    const int kMaxMask = 1 << (n + 1);
+    const int maxMask = 1 << (n + 1);
     // dp[i][mask][turn] := the maximum (Alice) or the minimum (Bob) cost to
     // kill all pawns, where i is the current pawn, mask is the set of pawns
     // that have been killed, and turn is the current player's turn (0 for Alice
@@ -25,10 +25,10 @@ class Solution {
         n + 1, vector<vector<int>>(1 << (n + 1), vector<int>(2)));
 
     for (int i = 0; i < n + 1; ++i)
-      for (int mask = 0; mask < kMaxMask - 1; ++mask)
+      for (int mask = 0; mask < maxMask - 1; ++mask)
         dp[i][mask] = {-kMax, kMax};
 
-    for (int mask = kMaxMask - 2; mask >= 0; --mask)
+    for (int mask = maxMask - 2; mask >= 0; --mask)
       for (int i = 0; i < n + 1; ++i)
         for (int turn = 0; turn < 2; ++turn)
           for (int j = 0; j < n; ++j) {

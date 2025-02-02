@@ -4,7 +4,7 @@ class Solution:
       numArrows: int,
       aliceArrows: list[int],
   ) -> list[int]:
-    allMask = (1 << 12) - 1
+    kFullMask = (1 << 12) - 1
     maxPoint = 0
     maxMask = 0
 
@@ -16,7 +16,7 @@ class Solution:
           point += i
       return leftArrows >= 0, point
 
-    for mask in range(allMask):
+    for mask in range(kFullMask):
       shotable, point = getShotableAndPoint(mask, numArrows)
       if shotable and point > maxPoint:
         maxPoint = point
