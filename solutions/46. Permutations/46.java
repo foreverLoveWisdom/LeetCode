@@ -1,7 +1,6 @@
 class Solution {
   public List<List<Integer>> permute(int[] nums) {
     List<List<Integer>> ans = new ArrayList<>();
-
     dfs(nums, new boolean[nums.length], new ArrayList<>(), ans);
     return ans;
   }
